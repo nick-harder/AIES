@@ -1,0 +1,200 @@
+/* --- Global Styles --- */
+:root {
+  --primary-color: #1e3a8a;
+  --secondary-color: #f5f5f5;
+  --accent-color: #e76f51;
+  --text-color: #333;
+  --card-bg: #fff;
+  --card-shadow: rgba(0, 0, 0, 0.1);
+  --heading-font: 'Lato', sans-serif;
+  --body-font: 'Lato', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--secondary-color);
+  color: var(--text-color);
+  font-family: var(--body-font);
+  line-height: 1.6;
+  padding: 20px;
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+h1, h2, h3 {
+  color: var(--primary-color);
+}
+
+/* --- Header --- */
+header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.2em;
+}
+header p,
+header .course-desc {
+  font-size: 1.1rem;
+  color: #555;
+  max-width: 800px;
+  margin: 0 auto 1em;
+  text-align: left;
+  line-height: 1.5;
+}
+
+/* Hero header */
+header.hero {
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  color: #fff;
+  padding: 60px 20px;
+  text-align: center;
+  border-radius: 0 0 20px 20px;
+}
+header.hero h1,
+header.hero p {
+  color: #fff;
+}
+
+/* --- Grid Container for Lecture Cards --- */
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+/* --- Lecture Card Styles --- */
+.card {
+  border-top: 4px solid var(--accent-color);
+  background: var(--card-bg);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px var(--card-shadow);
+}
+
+.card h3 {
+  font-family: var(--heading-font);
+  font-size: 1.4rem;
+  margin-bottom: 16px;
+  text-align: left;
+  min-height: 4.8em;    /* reserve three lines of text so Slides align */
+}
+
+/* --- Resource List Styles --- */
+.resources {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 0;       /* reset so list always follows title block */
+}
+.resources li {
+  margin-bottom: 12px;
+}
+.resources li:last-child {
+  margin-bottom: 0;
+}
+
+/* --- Full-Width Button Styles (Slides & Data Folder) --- */
+.full-button {
+  display: block;
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 12px;
+  text-align: left;
+  font-weight: bold;
+  color: #fff;
+  transition: background 0.3s ease;
+}
+.full-button--slides {
+  background: #007ACC; /* blue */
+}
+.full-button--slides:hover {
+  background: #005a9e;
+}
+.full-button--data {
+  background: #28A745; /* green */
+}
+.full-button--data:hover {
+  background: #1f7d35;
+}
+
+/* --- Notebook Table Styles --- */
+.notebook-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.notebook-table th {
+  text-align: left;
+  padding: 8px;
+  background: var(--accent-color);
+  color: #fff;
+  font-weight: bold;
+}
+.notebook-table td {
+  padding: 8px;
+  text-align: left;
+}
+
+/* --- Solution Notebook Header --- */
+/* Replace your existing .solution-header rule with: */
+.notebook-table th.solution-header {
+  background: #9b59b6;  /* deep purple */
+  color: #fff;
+  border-radius: 12px;
+}
+
+.notebook-table th.exercise-header {
+  background: #e76f51;  /* coral */
+  color: #fff;
+  border-radius: 12px;
+}
+
+
+/* --- Colab Badge Alignment --- */
+.colab-badge {
+  vertical-align: middle;
+}
+
+/* --- Footer --- */
+footer.footer {
+  background: var(--primary-color);
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+  border-radius: 20px 20px 0 0;
+  font-size: 0.9rem;
+}
+
+/* --- Responsive Tweaks --- */
+@media (max-width: 480px) {
+  .card {
+    padding: 16px;
+  }
+  .notebook-table th,
+  .notebook-table td {
+    padding: 6px;
+  }
+}
+
+.notebook-table td a {
+  font-weight: bold;
+}

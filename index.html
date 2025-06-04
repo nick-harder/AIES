@@ -4,131 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AI in Energy Systems – Course Materials</title>
-  <style>
-    /* --- Global Styles --- */
-    :root {
-      --primary-color: #2a6f97;
-      --secondary-color: #f9f9f9;
-      --accent-color: #ff9800;
-      --text-color: #333;
-      --card-bg: #fff;
-      --card-shadow: rgba(0, 0, 0, 0.1);
-      --font-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      background: var(--secondary-color);
-      color: var(--text-color);
-      font-family: var(--font-sans);
-      line-height: 1.6;
-      padding: 20px;
-    }
-
-    a {
-      color: var(--primary-color);
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-
-    h1, h2, h3 {
-      color: var(--primary-color);
-    }
-
-    /* --- Header --- */
-    header {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-    header h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.2em;
-    }
-    header p, header .course-desc {
-      font-size: 1.1rem;
-      color: #555;
-      max-width: 800px;
-      margin: 0 auto 1em;
-      text-align: left;
-      line-height: 1.5;
-    }
-
-    /* --- Grid Container for Lecture Cards --- */
-    .container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 24px;
-    }
-
-    /* --- Lecture Card Styles --- */
-    .card {
-      background: var(--card-bg);
-      border-radius: 8px;
-      box-shadow: 0 4px 8px var(--card-shadow);
-      display: flex;
-      flex-direction: column;
-      padding: 20px;
-      transition: transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-    }
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 6px 16px var(--card-shadow);
-    }
-
-    .card h3 {
-      font-size: 1.3rem;
-      margin-bottom: 12px;
-      text-align: center;
-    }
-
-    .resources {
-      list-style: none;
-      margin-top: 8px;
-      flex-grow: 1;
-    }
-    .resources li {
-      margin-bottom: 10px;
-      font-size: 1rem;
-      display: flex;
-      align-items: center;
-    }
-    .resources li:last-child {
-      margin-bottom: 0;
-    }
-    .resources li .icon {
-      margin-right: 8px;
-      font-size: 1.2rem;
-    }
-    .colab-badge {
-      height: 20px;
-      margin-left: 8px;
-      vertical-align: middle;
-    }
-
-    /* --- Footer --- */
-    footer {
-      margin-top: 60px;
-      text-align: center;
-      font-size: 0.9rem;
-      color: #777;
-    }
-  </style>
+  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
   <!-- ====== Header ====== -->
-  <header>
+  <header class="hero">
     <h1>AI in Energy Systems</h1>
     <p class="course-desc">
-      This course provides master's students with practical knowledge and skills for applying Artificial Intelligence (AI) and Machine Learning (ML) techniques specifically tailored to energy systems. Building directly upon prior Python programming experience and electricity market modeling (such as merit-order models), students will learn to implement AI methods for forecasting, optimization, anomaly detection, and reinforcement learning (RL) in realistic energy scenarios.
-    </p>
+    This course equips master’s students with practical tools and applied knowledge to tackle real-world challenges in modern energy systems using Artificial Intelligence (AI) and Machine Learning (ML). Building on foundational skills in Python and prior exposure to electricity market modeling (e.g., merit-order models), students will learn how to develop, implement, and evaluate AI techniques tailored to forecasting, optimization, classification, and decision-making in energy applications.    </p>
   </header>
 
   <!-- ====== Lecture Cards Grid ====== -->
@@ -138,23 +23,56 @@
     <div class="card">
       <h3>Lecture 7: Introduction to AI and Electricity Price Forecasting</h3>
       <ul class="resources">
-        <li><span class="icon">📄</span>
-          <a href="lecture7/slides/Lecture_7_Slides.pdf" target="_blank">Slides</a>
-        </li>
-        <li><span class="icon">📝</span>
-          <a href="lecture7/notebooks/Lecture_7_Exercise.ipynb" target="_blank">Exercise Notebook</a>
-          <a href="https://colab.research.google.com/github/nick-harder/AIES/blob/main/lecture7/notebooks/Lecture_7_Exercise.ipynb" target="_blank">
-            <img class="colab-badge" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab">
+        <!-- Slides -->
+        <li>
+          <a href="lecture7/slides/Lecture_7_Slides.pdf" target="_blank" class="full-button full-button--slides">
+            Slides
           </a>
         </li>
-        <li><span class="icon">🔍</span>
-          <a href="lecture7/notebooks/Lecture_7_Solution.ipynb" target="_blank">Solution Notebook</a>
-          <a href="https://colab.research.google.com/github/nick-harder/AIES/blob/main/lecture7/notebooks/Lecture_7_Solution.ipynb" target="_blank">
-            <img class="colab-badge" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab">
-          </a>
+
+        <!-- Exercise Notebook -->
+        <li>
+          <table class="notebook-table">
+            <tr>
+              <th colspan="2" class="exercise-header">Exercise Notebook</th>
+            </tr>
+            <tr>
+              <td style="width: 50%;">
+                <a href="lecture7/notebooks/Lecture_7_Exercise.ipynb" download>Download</a>
+              </td>
+              <td style="width: 50%;">
+                <a href="https://colab.research.google.com/github/nick-harder/AIES/blob/main/lecture7/notebooks/Lecture_7_Exercise.ipynb" target="_blank">
+                  <img class="colab-badge" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab">
+                </a>
+              </td>
+            </tr>
+          </table>
         </li>
-        <li><span class="icon">🗄️</span>
-          <a href="lecture7/data/" target="_blank">Data Folder</a>
+
+        <!-- Solution Notebook -->
+        <li>
+          <table class="notebook-table">
+            <tr>
+              <th colspan="2" class="solution-header">Solution Notebook</th>
+            </tr>
+            <tr>
+              <td style="width: 50%;">
+                <a href="lecture7/notebooks/Lecture_7_Solution.ipynb" download>Download</a>
+              </td>
+              <td style="width: 50%;">
+                <a href="https://colab.research.google.com/github/nick-harder/AIES/blob/main/lecture7/notebooks/Lecture_7_Solution.ipynb" target="_blank">
+                  <img class="colab-badge" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab">
+                </a>
+              </td>
+            </tr>
+          </table>
+        </li>
+
+        <!-- Data Folder -->
+        <li>
+          <a href="lecture7/data/" target="_blank" class="full-button full-button--data">
+            Data Folder
+          </a>
         </li>
       </ul>
     </div>
@@ -163,23 +81,56 @@
     <div class="card">
       <h3>Lecture 8: Advanced Forecasting Algorithms</h3>
       <ul class="resources">
-        <li><span class="icon">📄</span>
-          <a href="lecture8/slides/Lecture_8_Slides.pdf" target="_blank">Slides</a>
-        </li>
-        <li><span class="icon">📝</span>
-          <a href="lecture8/notebooks/Lecture_8_Exercise.ipynb" target="_blank">Exercise Notebook</a>
-          <a href="https://colab.research.google.com/github/nick-harder/AIES/blob/main/lecture8/notebooks/Lecture_8_Exercise.ipynb" target="_blank">
-            <img class="colab-badge" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab">
+        <!-- Slides -->
+        <li>
+          <a href="lecture8/slides/Lecture_8_Slides.pdf" target="_blank" class="full-button full-button--slides">
+            Slides
           </a>
         </li>
-        <li><span class="icon">🔍</span>
-          <a href="lecture8/notebooks/Lecture_8_Solution.ipynb" target="_blank">Solution Notebook</a>
-          <a href="https://colab.research.google.com/github/nick-harder/AIES/blob/main/lecture8/notebooks/Lecture_8_Solution.ipynb" target="_blank">
-            <img class="colab-badge" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab">
-          </a>
+
+        <!-- Exercise Notebook -->
+        <li>
+          <table class="notebook-table">
+            <tr>
+              <th colspan="2" class="exercise-header">Exercise Notebook</th>
+            </tr>
+            <tr>
+              <td style="width: 50%;">
+                <a href="lecture8/notebooks/Lecture_8_Exercise.ipynb" download>Download</a>
+              </td>
+              <td style="width: 50%;">
+                <a href="https://colab.research.google.com/github/nick-harder/AIES/blob/main/lecture8/notebooks/Lecture_8_Exercise.ipynb" target="_blank">
+                  <img class="colab-badge" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab">
+                </a>
+              </td>
+            </tr>
+          </table>
         </li>
-        <li><span class="icon">🗄️</span>
-          <a href="lecture8/data/" target="_blank">Data Folder</a>
+
+        <!-- Solution Notebook -->
+        <li>
+          <table class="notebook-table">
+            <tr>
+              <th colspan="2" class="solution-header">Solution Notebook</th>
+            </tr>
+            <tr>
+              <td style="width: 50%;">
+                <a href="lecture8/notebooks/Lecture_8_Solution.ipynb" download>Download</a>
+              </td>
+              <td style="width: 50%;">
+                <a href="https://colab.research.google.com/github/nick-harder/AIES/blob/main/lecture8/notebooks/Lecture_8_Solution.ipynb" target="_blank">
+                  <img class="colab-badge" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab">
+                </a>
+              </td>
+            </tr>
+          </table>
+        </li>
+
+        <!-- Data Folder -->
+        <li>
+          <a href="lecture8/data/" target="_blank" class="full-button full-button--data">
+            Data Folder
+          </a>
         </li>
       </ul>
     </div>
@@ -188,23 +139,56 @@
     <div class="card">
       <h3>Lecture 9: Price Formation on the aFRR Market</h3>
       <ul class="resources">
-        <li><span class="icon">📄</span>
-          <a href="lecture9/slides/Lecture_9_Slides.pdf" target="_blank">Slides</a>
-        </li>
-        <li><span class="icon">📝</span>
-          <a href="lecture9/notebooks/Lecture_9_Exercise.ipynb" target="_blank">Exercise Notebook</a>
-          <a href="https://colab.research.google.com/github/nick-harder/AIES/blob/main/lecture9/notebooks/Lecture_9_Exercise.ipynb" target="_blank">
-            <img class="colab-badge" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab">
+        <!-- Slides -->
+        <li>
+          <a href="lecture9/slides/Lecture_9_Slides.pdf" target="_blank" class="full-button full-button--slides">
+            Slides
           </a>
         </li>
-        <li><span class="icon">🔍</span>
-          <a href="lecture9/notebooks/Lecture_9_Solution.ipynb" target="_blank">Solution Notebook</a>
-          <a href="https://colab.research.google.com/github/nick-harder/AIES/blob/main/lecture9/notebooks/Lecture_9_Solution.ipynb" target="_blank">
-            <img class="colab-badge" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab">
-          </a>
+
+        <!-- Exercise Notebook -->
+        <li>
+          <table class="notebook-table">
+            <tr>
+              <th colspan="2" class="exercise-header">Exercise Notebook</th>
+            </tr>
+            <tr>
+              <td style="width: 50%;">
+                <a href="lecture9/notebooks/Lecture_9_Exercise.ipynb" download>Download</a>
+              </td>
+              <td style="width: 50%;">
+                <a href="https://colab.research.google.com/github/nick-harder/AIES/blob/main/lecture9/notebooks/Lecture_9_Exercise.ipynb" target="_blank">
+                  <img class="colab-badge" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab">
+                </a>
+              </td>
+            </tr>
+          </table>
         </li>
-        <li><span class="icon">🗄️</span>
-          <a href="lecture9/data/" target="_blank">Data Folder</a>
+
+        <!-- Solution Notebook -->
+        <li>
+          <table class="notebook-table">
+            <tr>
+              <th colspan="2" class="solution-header">Solution Notebook</th>
+            </tr>
+            <tr>
+              <td style="width: 50%;">
+                <a href="lecture9/notebooks/Lecture_9_Solution.ipynb" download>Download</a>
+              </td>
+              <td style="width: 50%;">
+                <a href="https://colab.research.google.com/github/nick-harder/AIES/blob/main/lecture9/notebooks/Lecture_9_Solution.ipynb" target="_blank">
+                  <img class="colab-badge" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab">
+                </a>
+              </td>
+            </tr>
+          </table>
+        </li>
+
+        <!-- Data Folder -->
+        <li>
+          <a href="lecture9/data/" target="_blank" class="full-button full-button--data">
+            Data Folder
+          </a>
         </li>
       </ul>
     </div>
@@ -213,26 +197,63 @@
     <div class="card">
       <h3>Lecture 10: Feature Engineering and Clustering of Load Profiles</h3>
       <ul class="resources">
-        <li><span class="icon">📄</span>
-          <a href="lecture10/slides/Lecture_10_Slides.pdf" target="_blank">Slides</a>
-        </li>
-        <li><span class="icon">📝</span>
-          <a href="lecture10/notebooks/Lecture_10_Exercise.ipynb" target="_blank">Exercise Notebook</a>
-          <a href="https://colab.research.google.com/github/nick-harder/AIES/blob/main/lecture10/notebooks/Lecture_10_Exercise.ipynb" target="_blank">
-            <img class="colab-badge" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab">
+        <!-- Slides -->
+        <li>
+          <a href="lecture10/slides/Lecture_10_Slides.pdf" target="_blank" class="full-button full-button--slides">
+            Slides
           </a>
         </li>
-        <li><span class="icon">🔍</span>
-          <a href="lecture10/notebooks/Lecture_10_Solution.ipynb" target="_blank">Solution Notebook</a>
-          <a href="https://colab.research.google.com/github/nick-harder/AIES/blob/main/lecture10/notebooks/Lecture_10_Solution.ipynb" target="_blank">
-            <img class="colab-badge" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab">
+
+        <!-- Exercise Notebook -->
+        <li>
+          <table class="notebook-table">
+            <tr>
+              <th colspan="2" class="exercise-header">Exercise Notebook</th>
+            </tr>
+            <tr>
+              <td style="width: 50%;">
+                <a href="lecture10/notebooks/Lecture_10_Exercise.ipynb" download>Download</a>
+              </td>
+              <td style="width: 50%;">
+                <a href="https://colab.research.google.com/github/nick-harder/AIES/blob/main/lecture10/notebooks/Lecture_10_Exercise.ipynb" target="_blank">
+                  <img class="colab-badge" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab">
+                </a>
+              </td>
+            </tr>
+          </table>
+        </li>
+
+        <!-- Solution Notebook -->
+        <li>
+          <table class="notebook-table">
+            <tr>
+              <th colspan="2" class="solution-header">Solution Notebook</th>
+            </tr>
+            <tr>
+              <td style="width: 50%;">
+                <a href="lecture10/notebooks/Lecture_10_Solution.ipynb" download>Download</a>
+              </td>
+              <td style="width: 50%;">
+                <a href="https://colab.research.google.com/github/nick-harder/AIES/blob/main/lecture10/notebooks/Lecture_10_Solution.ipynb" target="_blank">
+                  <img class="colab-badge" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab">
+                </a>
+              </td>
+            </tr>
+          </table>
+        </li>
+
+        <!-- Data Folder -->
+        <li>
+          <a href="lecture10/data/" target="_blank" class="full-button full-button--data">
+            Data Folder
           </a>
         </li>
-        <li><span class="icon">🗄️</span>
-          <a href="lecture10/data/" target="_blank">Data Folder</a>
-        </li>
-        <li><span class="icon">📊</span>
-          <a href="lecture10/plots/index.html" target="_blank">Interactive Plots</a>
+
+        <!-- Interactive Plots -->
+        <li>
+          <a href="lecture10/plots/index.html" target="_blank" class="full-button" style="background-color: #17a2b8;">
+            Interactive Plots
+          </a>
         </li>
       </ul>
     </div>
@@ -241,23 +262,56 @@
     <div class="card">
       <h3>Lecture 11: Supervised Classification of DER Types from Load Features</h3>
       <ul class="resources">
-        <li><span class="icon">📄</span>
-          <a href="lecture11/slides/Lecture_11_Slides.pdf" target="_blank">Slides</a>
-        </li>
-        <li><span class="icon">📝</span>
-          <a href="lecture11/notebooks/Lecture_11_Exercise.ipynb" target="_blank">Exercise Notebook</a>
-          <a href="https://colab.research.google.com/github/nick-harder/AIES/blob/main/lecture11/notebooks/Lecture_11_Exercise.ipynb" target="_blank">
-            <img class="colab-badge" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab">
+        <!-- Slides -->
+        <li>
+          <a href="lecture11/slides/Lecture_11_Slides.pdf" target="_blank" class="full-button full-button--slides">
+            Slides
           </a>
         </li>
-        <li><span class="icon">🔍</span>
-          <a href="lecture11/notebooks/Lecture_11_Solution.ipynb" target="_blank">Solution Notebook</a>
-          <a href="https://colab.research.google.com/github/nick-harder/AIES/blob/main/lecture11/notebooks/Lecture_11_Solution.ipynb" target="_blank">
-            <img class="colab-badge" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab">
-          </a>
+
+        <!-- Exercise Notebook -->
+        <li>
+          <table class="notebook-table">
+            <tr>
+              <th colspan="2" class="exercise-header">Exercise Notebook</th>
+            </tr>
+            <tr>
+              <td style="width: 50%;">
+                <a href="lecture11/notebooks/Lecture_11_Exercise.ipynb" download>Download</a>
+              </td>
+              <td style="width: 50%;">
+                <a href="https://colab.research.google.com/github/nick-harder/AIES/blob/main/lecture11/notebooks/Lecture_11_Exercise.ipynb" target="_blank">
+                  <img class="colab-badge" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab">
+                </a>
+              </td>
+            </tr>
+          </table>
         </li>
-        <li><span class="icon">🗄️</span>
-          <a href="lecture11/data/" target="_blank">Data Folder</a>
+
+        <!-- Solution Notebook -->
+        <li>
+          <table class="notebook-table">
+            <tr>
+              <th colspan="2" class="solution-header">Solution Notebook</th>
+            </tr>
+            <tr>
+              <td style="width: 50%;">
+                <a href="lecture11/notebooks/Lecture_11_Solution.ipynb" download>Download</a>
+              </td>
+              <td style="width: 50%;">
+                <a href="https://colab.research.google.com/github/nick-harder/AIES/blob/main/lecture11/notebooks/Lecture_11_Solution.ipynb" target="_blank">
+                  <img class="colab-badge" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab">
+                </a>
+              </td>
+            </tr>
+          </table>
+        </li>
+
+        <!-- Data Folder -->
+        <li>
+          <a href="lecture11/data/" target="_blank" class="full-button full-button--data">
+            Data Folder
+          </a>
         </li>
       </ul>
     </div>
@@ -266,23 +320,56 @@
     <div class="card">
       <h3>Lecture 12: Capstone Project – Identifying DERs in Full Smart Meter Dataset</h3>
       <ul class="resources">
-        <li><span class="icon">📄</span>
-          <a href="lecture12/slides/Lecture_12_Slides.pdf" target="_blank">Slides</a>
-        </li>
-        <li><span class="icon">📝</span>
-          <a href="lecture12/notebooks/Lecture_12_Exercise.ipynb" target="_blank">Exercise Notebook</a>
-          <a href="https://colab.research.google.com/github/nick-harder/AIES/blob/main/lecture12/notebooks/Lecture_12_Exercise.ipynb" target="_blank">
-            <img class="colab-badge" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab">
+        <!-- Slides -->
+        <li>
+          <a href="lecture12/slides/Lecture_12_Slides.pdf" target="_blank" class="full-button full-button--slides">
+            Slides
           </a>
         </li>
-        <li><span class="icon">🔍</span>
-          <a href="lecture12/notebooks/Lecture_12_Solution.ipynb" target="_blank">Solution Notebook</a>
-          <a href="https://colab.research.google.com/github/nick-harder/AIES/blob/main/lecture12/notebooks/Lecture_12_Solution.ipynb" target="_blank">
-            <img class="colab-badge" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab">
-          </a>
+
+        <!-- Exercise Notebook -->
+        <li>
+          <table class="notebook-table">
+            <tr>
+              <th colspan="2" class="exercise-header">Exercise Notebook</th>
+            </tr>
+            <tr>
+              <td style="width: 50%;">
+                <a href="lecture12/notebooks/Lecture_12_Exercise.ipynb" download>Download</a>
+              </td>
+              <td style="width: 50%;">
+                <a href="https://colab.research.google.com/github/nick-harder/AIES/blob/main/lecture12/notebooks/Lecture_12_Exercise.ipynb" target="_blank">
+                  <img class="colab-badge" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab">
+                </a>
+              </td>
+            </tr>
+          </table>
         </li>
-        <li><span class="icon">🗄️</span>
-          <a href="lecture12/data/" target="_blank">Data Folder</a>
+
+        <!-- Solution Notebook -->
+        <li>
+          <table class="notebook-table">
+            <tr>
+              <th colspan="2" class="solution-header">Solution Notebook</th>
+            </tr>
+            <tr>
+              <td style="width: 50%;">
+                <a href="lecture12/notebooks/Lecture_12_Solution.ipynb" download>Download</a>
+              </td>
+              <td style="width: 50%;">
+                <a href="https://colab.research.google.com/github/nick-harder/AIES/blob/main/lecture12/notebooks/Lecture_12_Solution.ipynb" target="_blank">
+                  <img class="colab-badge" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab">
+                </a>
+              </td>
+            </tr>
+          </table>
+        </li>
+
+        <!-- Data Folder -->
+        <li>
+          <a href="lecture12/data/" target="_blank" class="full-button full-button--data">
+            Data Folder
+          </a>
         </li>
       </ul>
     </div>
@@ -291,23 +378,56 @@
     <div class="card">
       <h3>Lecture 13: Reinforcement Learning for Storage Dispatch</h3>
       <ul class="resources">
-        <li><span class="icon">📄</span>
-          <a href="lecture13/slides/Lecture_13_Slides.pdf" target="_blank">Slides</a>
-        </li>
-        <li><span class="icon">📝</span>
-          <a href="lecture13/notebooks/Lecture_13_Exercise.ipynb" target="_blank">Exercise Notebook</a>
-          <a href="https://colab.research.google.com/github/nick-harder/AIES/blob/main/lecture13/notebooks/Lecture_13_Exercise.ipynb" target="_blank">
-            <img class="colab-badge" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab">
+        <!-- Slides -->
+        <li>
+          <a href="lecture13/slides/Lecture_13_Slides.pdf" target="_blank" class="full-button full-button--slides">
+            Slides
           </a>
         </li>
-        <li><span class="icon">🔍</span>
-          <a href="lecture13/notebooks/Lecture_13_Solution.ipynb" target="_blank">Solution Notebook</a>
-          <a href="https://colab.research.google.com/github/nick-harder/AIES/blob/main/lecture13/notebooks/Lecture_13_Solution.ipynb" target="_blank">
-            <img class="colab-badge" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab">
-          </a>
+
+        <!-- Exercise Notebook -->
+        <li>
+          <table class="notebook-table">
+            <tr>
+              <th colspan="2" class="exercise-header">Exercise Notebook</th>
+            </tr>
+            <tr>
+              <td style="width: 50%;">
+                <a href="lecture13/notebooks/Lecture_13_Exercise.ipynb" download>Download</a>
+              </td>
+              <td style="width: 50%;">
+                <a href="https://colab.research.google.com/github/nick-harder/AIES/blob/main/lecture13/notebooks/Lecture_13_Exercise.ipynb" target="_blank">
+                  <img class="colab-badge" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab">
+                </a>
+              </td>
+            </tr>
+          </table>
         </li>
-        <li><span class="icon">🗄️</span>
-          <a href="lecture13/data/" target="_blank">Data Folder</a>
+
+        <!-- Solution Notebook -->
+        <li>
+          <table class="notebook-table">
+            <tr>
+              <th colspan="2" class="solution-header">Solution Notebook</th>
+            </tr>
+            <tr>
+              <td style="width: 50%;">
+                <a href="lecture13/notebooks/Lecture_13_Solution.ipynb" download>Download</a>
+              </td>
+              <td style="width: 50%;">
+                <a href="https://colab.research.google.com/github/nick-harder/AIES/blob/main/lecture13/notebooks/Lecture_13_Solution.ipynb" target="_blank">
+                  <img class="colab-badge" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab">
+                </a>
+              </td>
+            </tr>
+          </table>
+        </li>
+
+        <!-- Data Folder -->
+        <li>
+          <a href="lecture13/data/" target="_blank" class="full-button full-button--data">
+            Data Folder
+          </a>
         </li>
       </ul>
     </div>
@@ -315,7 +435,7 @@
   </main>
 
   <!-- ====== Footer ====== -->
-  <footer>
+  <footer class="footer">
     <p>&copy; 2025 AI in Energy Systems | All rights reserved.</p>
   </footer>
 
