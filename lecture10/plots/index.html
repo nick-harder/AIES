@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Smart-Meter Data</title>
+
+  <!-- 1) Load D3 so that d3.csv(...) works -->
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+
+  <!-- 2) Load Plotly for charting -->
+  <script src="https://cdn.plot.ly/plotly-2.29.1.min.js"></script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background: #f9f9f9;
+    }
+    h1 {
+      margin-bottom: 0.5em;
+    }
+    .plot-container {
+      width: 100%;
+      max-width: 900px;
+      margin-bottom: 2em;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 10px;
+      box-shadow: 0px 2px 4px rgba(0,0,0,0.1);
+    }
+    .plot-title {
+      text-align: center;
+      font-size: 1.2em;
+      margin-bottom: 0.3em;
+    }
+    .plot-div {
+      width: 100%;
+      height: 500px;
+    }
+    #month-selector {
+      margin-bottom: 1em;
+      font-size: 1em;
+      padding: 5px;
+    }
+    /* Optional: hide the 404 favicon error by specifying an empty icon */
+    link[rel="icon"] {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Smart-Meter Data (Meters 12 & 18)</h1>
+
+  <!-- Month selector (April is default '04') -->
+  <label for="month-selector">Select Month:</label>
+  <select id="month-selector">
+    <option value="01">January</option>
+    <option value="02">February</option>
+    <option value="03">March</option>
+    <option value="04" selected>April</option>
+    <option value="05">May</option>
+    <option value="06">June</option>
+    <option value="07">July</option>
+    <option value="08">August</option>
+    <option value="09">September</option>
+    <option value="10">October</option>
+    <option value="11">November</option>
+    <option value="12">December</option>
+  </select>
+
+  <!-- Plot container for Meter 12 -->
+  <div class="plot-container">
+    <div class="plot-title" id="title-12">
+      Meter 12: Net Consumption
+    </div>
+    <div id="plot-meter-12" class="plot-div"></div>
+  </div>
+
+  <!-- Plot container for Meter 18 -->
+  <div class="plot-container">
+    <div class="plot-title" id="title-18">
+      Meter 18: Net Consumption
+    </div>
+    <div id="plot-meter-18" class="plot-div"></div>
+  </div>
+
+  <script>
+    // 1) Load the CSV using d3.csv (not Plotly.d3.csv)
+    d3.csv("../data/smart_meter_2022.csv").then(function(rows) {
+      // If this callback fires, the CSV was successfully fetched.
+      console.log("✔ CSV loaded, total rows:", rows.length);
+
+      // Convert types: rows come in as { Timestamp: "…", Net_Consumption_kWh: "…", meter_id: "…" }
+      rows.forEach(function(r) {
+        r.Timestamp = new Date(r.Timestamp);                         // turn string → Date
+        r.Net_Consumption_kWh = parseFloat(r.Net_Consumption_kWh);    // turn string → number
+        r.meter_id = r.meter_id.toString();                           // ensure it’s a string
+      });
+
+      // Helper: filter by “YYYY-MM” month code (e.g. "04" for April)
+      function filterByMonth(monthStr) {
+        return rows.filter(r => {
+          // Only keep rows where YYYY is 2022 (implied if your CSV is purely 2022)
+          let yy = r.Timestamp.getFullYear();
+          if (yy !== 2022) return false;
+          let mm = String(r.Timestamp.getMonth() + 1).padStart(2, "0");
+          return mm === monthStr;
+        });
+      }
+
+      // Helper: split an array of row-objects into meter12 vs. meter18
+      function splitByMeter(subset) {
+        return {
+          "12": subset.filter(r => r.meter_id === "12"),
+          "18": subset.filter(r => r.meter_id === "18")
+        };
+      }
+
+      // Build a Plotly trace from an array of rows for one meter
+      function makeTrace(dataArr, color, label) {
+        return {
+          x: dataArr.map(r => r.Timestamp),
+          y: dataArr.map(r => r.Net_Consumption_kWh),
+          mode: "lines",
+          name: label,
+          line: { color: color },
+          hovertemplate: "%{x|%Y-%m-%d %H:%M} : %{y:.2f} kWh<extra></extra>"
+        };
+      }
+
+      // Render both charts for a given month code ("01" through "12")
+      function renderForMonth(monthStr) {
+        console.log("▶ Rendering for month:", monthStr);
+
+        let subset = filterByMonth(monthStr);
+        console.log("   Rows in month " + monthStr + ":", subset.length);
+
+        let byMeter = splitByMeter(subset);
+        console.log("   Meter 12 rows:", byMeter["12"].length);
+        console.log("   Meter 18 rows:", byMeter["18"].length);
+
+        // Create traces
+        let trace12 = makeTrace(byMeter["12"], "blue", "Meter 12");
+        let trace18 = makeTrace(byMeter["18"], "red", "Meter 18");
+
+        // Shared layout
+        let layoutCommon = {
+          margin: { t: 40, r: 30, b: 40, l: 50 },
+          xaxis: { title: "Date", type: "date", showgrid: false },
+          yaxis: { title: "Net Consumption (kWh)", rangemode: "tozero", showgrid: true }
+        };
+
+        // Update the titles above each chart
+        const monthNames = {
+          "01": "January",   "02": "February", "03": "March",
+          "04": "April",     "05": "May",      "06": "June",
+          "07": "July",      "08": "August",   "09": "September",
+          "10": "October",   "11": "November", "12": "December"
+        };
+        document.getElementById("title-12").textContent =
+          `Meter 12: Net Consumption (${monthNames[monthStr]} 2022)`;
+        document.getElementById("title-18").textContent =
+          `Meter 18: Net Consumption (${monthNames[monthStr]} 2022)`;
+
+        // Draw or update the Plotly plots
+        Plotly.react("plot-meter-12", [trace12], layoutCommon, { responsive: true });
+        Plotly.react("plot-meter-18", [trace18], layoutCommon, { responsive: true });
+      }
+
+      // 2) Initial render for April ("04")
+      renderForMonth("04");
+
+      // 3) Hook up the dropdown to re-render on change
+      document.getElementById("month-selector").addEventListener("change", function() {
+        renderForMonth(this.value);
+      });
+    })
+    .catch(function(err) {
+      console.error("❌ Error loading CSV:", err);
+      alert("Failed to load smart_meter_2022.csv. Check the path and filename.");
+    });
+  </script>
+</body>
+</html>
